@@ -1,0 +1,6 @@
+body {
+	margin: 0;
+}
+#cnvs {
+	outline: #000000 1px solid;
+}
