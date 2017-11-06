@@ -11,9 +11,9 @@
 		bufer = ctx.getImageData(0, 0, canvas.width,canvas.height);
 
 
-	ctx.lineWidth = 10;
+	ctx.lineWidth = 4;
 	ctx.shadowColor = "#000000";
-	ctx.shadowBlur = 5;
+	ctx.shadowBlur = 1;
 	ctx.shadowOffsetX = -offset;
 
 
