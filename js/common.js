@@ -1,14 +1,14 @@
-$(document).ready(function(){
+(function (w, d) {
 	"use strict";
 
 	var action = "up",
-		canvas = $("#cnvs"),
-		color = $("#color"),
-		body = $("body"),
-		ctx = canvas[0].getContext('2d'),
+		canvas = d.querySelector("#cnvs"),
+		color = d.querySelector("#color"),
+		body = d.querySelector("body"),
+		ctx = canvas.getContext("2d"),
 		offset = 1000,
 		points = [],
-		bufer = ctx.getImageData(0, 0, canvas.width(),canvas.height());
+		bufer = ctx.getImageData(0, 0, canvas.width,canvas.height);
 
 
 	ctx.lineWidth = 10;
@@ -17,12 +17,12 @@ $(document).ready(function(){
 	ctx.shadowOffsetX = -offset;
 
 
-	body.on("mousedown", function(e){
+	body.addEventListener("mousedown", function(e){
 		action = "down";
 		points.push([e.pageX, e.pageY]);
 	});
 
-	body.on("mousemove", function(e){
+	body.addEventListener("mousemove", function(e){
 		if (action === "down") {
 			ctx.putImageData(bufer, 0, 0);
 			points.push([e.pageX,e.pageY]);
@@ -35,13 +35,13 @@ $(document).ready(function(){
 		}
 	});
 
-	body.on("mouseup", function(){
+	body.addEventListener("mouseup", function(){
 		action = "up";
 		points = [];
-		bufer = ctx.getImageData(0, 0, canvas.width(),canvas.height());
+		bufer = ctx.getImageData(0, 0, canvas.width,canvas.height);
 	});
 
-	color.on("change", function(e){
+	color.addEventListener("change", function(e){
 		ctx.shadowColor = e.target.value;
 	});
-});
+}(window, document));
